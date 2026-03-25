@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Exam History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container" style="max-width: 900px; width: 95%;">
+    <h2>📊 මගේ ප්‍රගති වාර්තාව</h2>
+    
+    <div style="background: white; padding: 20px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <canvas id="scoreChart" style="max-height: 300px;"></canvas>
+    </div>
+
+    <div class="table-responsive">
+        <table id="history-table">
+            <thead>
+                <tr>
+                    <th>දිනය</th>
+                    <th>කාණ්ඩය</th>
+                    <th>ලකුණු</th>
+                    <th>කාලය</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <button onclick="window.location.href='profile.html'" style="background-color: #6c757d; width: 150px;">ආපසු යන්න</button>
+    </div>
+</div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

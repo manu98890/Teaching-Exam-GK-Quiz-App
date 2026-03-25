@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Profile - Quiz Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Desktop (ලොකු Screen) සඳහා --- */
+.dashboard-layout { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background: #1a73e8; color: white; padding: 20px; position: fixed; height: 100vh; z-index: 1000; }
+.main-content { flex: 1; padding: 30px; background: #f8f9fa; margin-left: 250px; transition: 0.3s; }
+.sidebar a { display: block; color: white; padding: 12px; text-decoration: none; cursor: pointer; border-radius: 5px; margin-bottom: 5px; transition: 0.3s; }
+.sidebar a:hover, .sidebar a.active { background: #1557b0; }
+.content-section { display: none; }
+.content-section.active { display: block; }
+.quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
+/* --- 📱 Mobile (ෆෝන්) සඳහා Media Query --- */
+@media (max-width: 768px) {
+    .dashboard-layout { flex-direction: column; }
+    
+    .sidebar { 
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap; /* ලින්ක් ටික පේළියට ගන්න */
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .sidebar h3, .sidebar hr { display: none; } /* Mobile එකේදී Header එක හංගමු */
+
+    .sidebar a { 
+        padding: 8px 12px; 
+        margin-bottom: 0; 
+        font-size: 13px; 
+        flex: 1 1 auto; /* ඉඩ තියෙන විදියට බෙදෙන්න */
+        text-align: center;
+    }
+
+    .main-content { 
+        margin-left: 0; /* Margin එක අයින් කරන්න */
+        padding: 15px; 
+    }
+
+    .quiz-grid { 
+        grid-template-columns: 1fr; /* එක පේළියට එක බැගින් */
+    }
+
+    .profile-card input {
+        width: 100%; /* Input boxes ෆෝන් එකේ ලස්සනට පේන්න */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div class="sidebar">
+            <h3>Quiz Master</h3>
+            <hr>
+            <a href="#" onclick="showSection('profile-view')" id="profile-link" class="active">👤 My Profile </a>
+            <a href="#" onclick="showSection('quiz-view')" id="quiz-link">📝 Quizzes</a>
+            <a href="leaderboard.html">🏆 Leaderboard</a>
+            <a href="history.html" class="sidebar-link">📊 Exam History</a>
+             <a href="#" id="logout-link">🚪 Logout</a>
+               
+        </div>
+
+        <div class="main-content">
+            
+            <div id="profile-view" class="content-section active">
+                <div class="profile-card">
+                    <h3>මගේ විස්තර</h3>
+                    <div id="user-info-display">පූරණය වේ...</div>
+                    <hr>
+                    <h4>තොරතුරු යාවත්කාලීන කරන්න</h4>
+                    <input type="text" id="edit-address" placeholder="ලිපිනය">
+                    <input type="text" id="edit-phone" placeholder="දුරකථන අංකය">
+                    <button id="update-profile-btn" style="padding: 10px 20px; background-color: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer;">Update Profile</button>
+                </div>
+            </div>
+          
+
+         <div id="quiz-view" class="content-section">
+    <h2 class="quiz-selection-title">ප්‍රශ්න පත්‍රය තෝරන්න</h2>
+    
+    <div class="quiz-grid">
+        <div class="quiz-card cat-gk1" onclick="window.location.href='quiz.html?cat=gk1'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 1) </h4>
+            <p>ගුරැ විභාගය</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+
+        <div class="quiz-card cat-gk2" onclick="window.location.href='quiz.html?cat=gk2'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 2)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+
+        <div class="quiz-card cat-gk3" onclick="window.location.href='quiz.html?cat=gk3'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 3)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+
+        <div class="quiz-card cat-gk4" onclick="window.location.href='quiz.html?cat=gk4'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 4)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk5" onclick="window.location.href='quiz.html?cat=gk5'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 5)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk6" onclick="window.location.href='quiz.html?cat=gk6'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 6)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk7" onclick="window.location.href='quiz.html?cat=gk7'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 7)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk8" onclick="window.location.href='quiz.html?cat=gk8'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 8)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk9" onclick="window.location.href='quiz.html?cat=gk9'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 9)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        
+        <div class="quiz-card cat-gk10" onclick="window.location.href='quiz.html?cat=gk10'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 10)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        <div class="quiz-card cat-gk11" onclick="window.location.href='quiz.html?cat=gk11'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 11)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+        </div>
+        <div class="quiz-card cat-gk12" onclick="window.location.href='quiz.html?cat=gk12'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 12)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+    </div>
+    <div class="quiz-card cat-gk13" onclick="window.location.href='quiz.html?cat=gk13'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 13)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+   <div class="quiz-card cat-gk14" onclick="window.location.href='quiz.html?cat=gk14'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 14)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+ <div class="quiz-card cat-gk15" onclick="window.location.href='quiz.html?cat=gk15'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 15)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk16" onclick="window.location.href='quiz.html?cat=gk16'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 16)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk17" onclick="window.location.href='quiz.html?cat=gk17'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 17)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk18" onclick="window.location.href='quiz.html?cat=gk18'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 18)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk19" onclick="window.location.href='quiz.html?cat=gk19'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 19)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk20" onclick="window.location.href='quiz.html?cat=gk20'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 20)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk21" onclick="window.location.href='quiz.html?cat=gk21'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 21)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk22" onclick="window.location.href='quiz.html?cat=gk22'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 22)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk23" onclick="window.location.href='quiz.html?cat=gk23'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 23)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk24" onclick="window.location.href='quiz.html?cat=gk24'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 24)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk25" onclick="window.location.href='quiz.html?cat=gk25'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 25)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk26" onclick="window.location.href='quiz.html?cat=gk26'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 26)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk27" onclick="window.location.href='quiz.html?cat=gk27'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 27)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk28" onclick="window.location.href='quiz.html?cat=gk28'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 28)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk29" onclick="window.location.href='quiz.html?cat=gk29'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 29)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk30" onclick="window.location.href='quiz.html?cat=gk30'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 30)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk31" onclick="window.location.href='quiz.html?cat=gk31'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 31)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk32" onclick="window.location.href='quiz.html?cat=gk32'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 32)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk33" onclick="window.location.href='quiz.html?cat=gk33'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 33)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk34" onclick="window.location.href='quiz.html?cat=gk34'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 34)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk35" onclick="window.location.href='quiz.html?cat=gk35'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 35)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk36" onclick="window.location.href='quiz.html?cat=gk36'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 36)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk37" onclick="window.location.href='quiz.html?cat=gk37'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 37)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk38" onclick="window.location.href='quiz.html?cat=gk38'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 38)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk39" onclick="window.location.href='quiz.html?cat=gk39'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 39)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk40" onclick="window.location.href='quiz.html?cat=gk40'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 40)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk41" onclick="window.location.href='quiz.html?cat=gk41'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 41)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk42" onclick="window.location.href='quiz.html?cat=gk42'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 42)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk43" onclick="window.location.href='quiz.html?cat=gk43'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 43)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk44" onclick="window.location.href='quiz.html?cat=gk44'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 44)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk45" onclick="window.location.href='quiz.html?cat=gk45'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 45)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk46" onclick="window.location.href='quiz.html?cat=gk46'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 46)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk47" onclick="window.location.href='quiz.html?cat=gk47'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (GK 47)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk48" onclick="window.location.href='quiz.html?cat=gk48'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (48)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk49" onclick="window.location.href='quiz.html?cat=gk49'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (49)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+<div class="quiz-card cat-gk50" onclick="window.location.href='quiz.html?cat=gk50'">
+            <div class="icon">🌍</div>
+            <h4>සාමාන්‍ය දැනීම (50)</h4>
+            <p>ගුරැ විභාග</p>
+            <div class="start-link">පටන් ගන්න →</div>
+</div>
+
+
+    <script>
+        // Section මාරු කරන Function එක
+        function showSection(sectionId) {
+            // හැම section එකක්ම හංගන්න
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Sidebar ලින්ක් වල active පාට අයින් කරන්න
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // තෝරගත්ත section එක පෙන්වන්න
+            document.getElementById(sectionId).classList.add('active');
+            
+            // ක්ලික් කරපු ලින්ක් එකට active පාට දාන්න
+            if(sectionId === 'profile-view') document.getElementById('profile-link').classList.add('active');
+            if(sectionId === 'quiz-view') document.getElementById('quiz-link').classList.add('active');
+        }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

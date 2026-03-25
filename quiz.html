@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Exam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="quiz-container" style="max-width: 800px;">
+    <div id="quiz-header">
+        <span id="timer">කාලය: 60:00</span>
+        <span id="score-display">ලකුණු: 0</span>
+    </div>
+    <div id="rules-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>විභාග නීති රීති</h2>
+        <hr>
+        <ul class="rules-list">
+            <li>මෙම විභාගය සඳහා ඔබට <b>විනාඩි 60ක</b> කාලයක් ලැබේ.</li>
+            <li>ප්‍රශ්න 50කට පිළිතුරු සැපයිය යුතුය.</li>
+            <li class="warning-rule">⚠️ <b>අවධානයයි:</b> විභාගය අතරතුර වෙනත් Browser Tabs හෝ Windows වලට යාමෙන් වළකින්න. එසේ කළහොත් ඔබගේ විභාගය ස්වයංක්‍රීයව අවලංගු වේ.</li>
+            <li>සියලුම ප්‍රශ්න අවසානයේ "විභාගය අවසන් කරන්න" බටන් එක ඔබන්න.</li>
+        </ul>
+        <button id="start-exam-btn" class="start-btn">විභාගය ආරම්භ කරන්න</button>
+    </div>
+</div>
+
+    <div id="question-nav" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; justify-content: center;"></div>
+    
+    <div id="question-box">
+        <h3 id="question-text">ප්‍රශ්නය පූරණය වේ...</h3>
+        <div id="options-container"></div>
+    </div>
+
+    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;">
+        <button id="prev-btn" style="width: 48%; background-color: #6c757d;">පසුපසට</button>
+        <button id="next-btn" style="width: 48%;">ඉදිරියට</button>
+        
+        <button id="finish-btn" style="width: 48%; background-color: #28a745;">විභාගය අවසන් කරන්න</button>
+        <button id="cancel-btn" style="width: 48%; background-color: #dc3545;">අවලංගු කර පිටවන්න</button>
+    </div>
+</div>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>

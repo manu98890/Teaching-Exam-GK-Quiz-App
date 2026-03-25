@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Register - Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container" style="max-width: 450px;">
+        <h2>නව ගිණුමක් සාදන්න</h2>
+        
+        <input type="text" id="reg-name" placeholder="සම්පූර්ණ නම">
+        <input type="text" id="reg-id" placeholder="ID අංකය">
+        <input type="email" id="reg-email" placeholder="Email ලිපිනය">
+        <input type="password" id="reg-password" placeholder="මුරපදය (අවම 6ක්)">
+        
+        <select id="reg-province" style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;">
+            <option value="">පළාත තෝරන්න</option>
+            <option value="Western">බස්නාහිර</option>
+            <option value="Central">මධ්‍යම</option>
+            <option value="Southern">දකුණ</option>
+            <option value="North Western">වයඹ</option>
+            <option value="Sabaragamuwa">සබරගමුව</option>
+            <option value="Uva">ඌව</option>
+            <option value="North Central">උතුරු මැද</option>
+            <option value="Eastern">නැගෙනහිර</option>
+            <option value="Northern">උතුර</option>
+        </select>
+        
+       <select id="reg-district" style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px;">
+    <option value="">පළාතක් තෝරන්න...</option>
+</select>
+        
+        <button id="final-register-btn" style="background-color: #34a853;">ගිණුම සාදන්න</button>
+        <p><a href="index.html">Login පේජ් එකට යන්න</a></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
