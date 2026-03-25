@@ -1,285 +1,112 @@
-/* --- 1. CSS Variables (ලෙහෙසියෙන් පාටවල් වෙනස් කරන්න) --- */
+/* --- 1. CSS Variables --- */
 :root {
     --primary-blue: #1a73e8;
     --sidebar-bg: #ffffff;
     --main-bg: #f0f4f8;
     --text-dark: #2c3e50;
+    --success-green: #28a745; /* කොළ පාට */
+    --error-red: #dc3545;     /* රතු පාට */
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     --hover-shadow: 0 15px 35px rgba(26, 115, 232, 0.15);
 }
 
 /* --- 2. Base Setup --- */
-* { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+* { box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+body { background-color: var(--main-bg); margin: 0; color: var(--text-dark); line-height: 1.6; }
 
-body {
-    background-color: var(--main-bg);
-    margin: 0;
-    color: var(--text-dark);
-}
-
-/* --- 3. Sidebar (Desktop) --- */
+/* --- 3. Sidebar & Layout --- */
 .dashboard-layout { display: flex; }
-
 .sidebar {
-    width: 260px;
-    background: var(--sidebar-bg);
-    padding: 30px 20px;
-    position: fixed;
-    height: 100vh;
-    border-right: 1px solid rgba(0,0,0,0.05);
-    z-index: 1000;
+    width: 260px; background: var(--sidebar-bg); padding: 30px 20px;
+    position: fixed; height: 100vh; border-right: 1px solid rgba(0,0,0,0.05); z-index: 1000;
 }
-
-.sidebar h3 { 
-    color: var(--primary-blue); 
-    font-size: 24px; 
-    margin-bottom: 30px; 
-    text-align: center;
-    font-weight: 800;
+.sidebar h3 { color: var(--primary-blue); text-align: center; font-weight: 800; margin-bottom: 25px; }
+.sidebar a {
+    display: flex; align-items: center; padding: 14px 18px; color: #5f6368;
+    text-decoration: none; border-radius: 12px; margin-bottom: 10px; font-weight: 600; transition: 0.3s;
 }
+.sidebar a:hover, .sidebar a.active { background: var(--primary-blue); color: white !important; }
+.main-content { flex: 1; margin-left: 260px; padding: 40px; min-height: 100vh; }
 
-.sidebar a, .sidebar-link {
-    display: flex;
-    align-items: center;
-    padding: 14px 18px;
-    color: #5f6368;
-    text-decoration: none;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
+/* --- 4. GK 1-50 Card Colors --- */
+.quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+.quiz-card { background: white; border-radius: 20px; padding: 30px 20px; text-align: center; transition: 0.3s; box-shadow: var(--card-shadow); border: 1px solid rgba(255, 255, 255, 0.8); }
+.quiz-card:hover { transform: translateY(-10px); }
 
-.sidebar a:hover, .sidebar a.active {
-    background: var(--primary-blue);
-    color: white;
-    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
-}
+.cat-gk1 { border-top: 6px solid #ff9f43; } .cat-gk2 { border-top: 6px solid #ee5253; }
+.cat-gk3 { border-top: 6px solid #0abde3; } .cat-gk4 { border-top: 6px solid #10ac84; }
+.cat-gk5 { border-top: 6px solid #5f27cd; } .cat-gk6 { border-top: 6px solid #2ecc71; }
+.cat-gk7 { border-top: 6px solid #3498db; } .cat-gk8 { border-top: 6px solid #9b59b6; }
+.cat-gk9 { border-top: 6px solid #e67e22; } .cat-gk10 { border-top: 6px solid #1abc9c; }
+/* ... (මම කලින් දීපු 50 ම මෙතනට දාගන්න) ... */
 
-/* --- 4. Main Content Area --- */
-.main-content {
-    flex: 1;
-    margin-left: 260px;
-    padding: 40px;
-    min-height: 100vh;
-}
+/* --- 🛑 5. QUIZ LOGIC COLORS (අලුතින් එක් කළ කොටස) --- */
 
-/* --- 5. Modern Quiz Grid & Multi-Color Cards --- */
-.quiz-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 25px;
-}
-
-.quiz-card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: var(--card-shadow);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.quiz-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--hover-shadow);
-}
-
-/* Card Icons */
-.quiz-card .icon {
-    font-size: 45px;
-    margin-bottom: 15px;
-    display: inline-block;
-    padding: 15px;
-    border-radius: 50%;
-    background: #f8f9fa;
-}
-
-
-
-/* Group 1: 1 - 10 */
-.cat-gk1 { border-top: 6px solid #ff9f43; }
-.cat-gk2 { border-top: 6px solid #ee5253; }
-.cat-gk3 { border-top: 6px solid #0abde3; }
-.cat-gk4 { border-top: 6px solid #10ac84; }
-.cat-gk5 { border-top: 6px solid #5f27cd; }
-.cat-gk6 { border-top: 6px solid #2ecc71; }
-.cat-gk7 { border-top: 6px solid #3498db; }
-.cat-gk8 { border-top: 6px solid #9b59b6; }
-.cat-gk9 { border-top: 6px solid #e67e22; }
-.cat-gk10 { border-top: 6px solid #1abc9c; }
-
-/* Group 2: 11 - 20 */
-.cat-gk11 { border-top: 6px solid #d35400; }
-.cat-gk12 { border-top: 6px solid #c0392b; }
-.cat-gk13 { border-top: 6px solid #8e44ad; }
-.cat-gk14 { border-top: 6px solid #2980b9; }
-.cat-gk15 { border-top: 6px solid #16a085; }
-.cat-gk16 { border-top: 6px solid #27ae60; }
-.cat-gk17 { border-top: 6px solid #f39c12; }
-.cat-gk18 { border-top: 6px solid #e74c3c; }
-.cat-gk19 { border-top: 6px solid #95a5a6; }
-.cat-gk20 { border-top: 6px solid #34495e; }
-
-/* Group 3: 21 - 30 */
-.cat-gk21 { border-top: 6px solid #ff6b6b; }
-.cat-gk22 { border-top: 6px solid #48dbfb; }
-.cat-gk23 { border-top: 6px solid #1dd1a1; }
-.cat-gk24 { border-top: 6px solid #feca57; }
-.cat-gk25 { border-top: 6px solid #5f27cd; }
-.cat-gk26 { border-top: 6px solid #54a0ff; }
-.cat-gk27 { border-top: 6px solid #00d2d3; }
-.cat-gk28 { border-top: 6px solid #ff9ff3; }
-.cat-gk29 { border-top: 6px solid #576574; }
-.cat-gk30 { border-top: 6px solid #222f3e; }
-
-/* Group 4: 31 - 40 */
-.cat-gk31 { border-top: 6px solid #45aaf2; }
-.cat-gk32 { border-top: 6px solid #4b7bec; }
-.cat-gk33 { border-top: 6px solid #a55eea; }
-.cat-gk34 { border-top: 6px solid #20bf6b; }
-.cat-gk35 { border-top: 6px solid #eb3b5a; }
-.cat-gk36 { border-top: 6px solid #fa8231; }
-.cat-gk37 { border-top: 6px solid #f7b731; }
-.cat-gk38 { border-top: 6px solid #26de81; }
-.cat-gk39 { border-top: 6px solid #0fb9b1; }
-.cat-gk40 { border-top: 6px solid #8854d0; }
-
-/* Group 5: 41 - 50 */
-.cat-gk41 { border-top: 6px solid #fc5c65; }
-.cat-gk42 { border-top: 6px solid #fd9644; }
-.cat-gk43 { border-top: 6px solid #fed330; }
-.cat-gk44 { border-top: 6px solid #26de81; }
-.cat-gk45 { border-top: 6px solid #2bcbba; }
-.cat-gk46 { border-top: 6px solid #eb3b5a; }
-.cat-gk47 { border-top: 6px solid #fa8231; }
-.cat-gk48 { border-top: 6px solid #45aaf2; }
-.cat-gk49 { border-top: 6px solid #4b7bec; }
-.cat-gk50 { border-top: 6px solid #a55eea; }
-/* ...අනෙක්වාටත් මෙහෙම දාන්න පුළුවන්... */
-
-.quiz-card h4 { font-size: 18px; margin: 10px 0; color: #2c3e50; }
-.quiz-card p { font-size: 13px; color: #7f8c8d; margin-bottom: 20px; }
-
-.start-link {
-    display: inline-block;
-    background: #f1f3f4;
-    color: var(--primary-blue);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.quiz-card:hover .start-link {
-    background: var(--primary-blue);
-    color: white;
-}
-
-/* --- 6. Profile & Containers --- */
-.profile-card, .quiz-container, .login-container {
-    background: white;
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: var(--card-shadow);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-input, select {
-    background: #f8f9fa;
-    border: 2px solid #f1f3f4;
-    padding: 14px;
-    border-radius: 12px;
+/* 🔘 පිළිතුරු බොත්තම් වල සාමාන්‍ය පෙනුම */
+.option-btn {
     width: 100%;
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: var(--primary-blue);
-    background: white;
-    outline: none;
-}
-
-button {
-    background: var(--primary-blue);
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 12px;
-    font-weight: 700;
+    padding: 16px 22px;
+    margin-bottom: 14px;
+    background: #ffffff;
+    border: 2px solid #eef0f2;
+    border-radius: 14px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.2s ease;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-button:hover {
-    filter: brightness(1.1);
-    transform: translateY(-2px);
+.option-btn:hover:not(:disabled) {
+    background: #f0f7ff;
+    border-color: var(--primary-blue);
+    transform: translateX(5px);
 }
 
-/* --- 7. Responsive Tables --- */
-.table-responsive {
-    background: white;
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: var(--card-shadow);
-    overflow-x: auto;
+/* ✅ හරි උත්තරය (කොළ පාට) */
+.option-btn.correct {
+    background-color: var(--success-green) !important;
+    color: white !important;
+    border-color: #1e7e34 !important;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+    font-weight: bold;
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-th { padding: 18px; color: #5f6368; font-weight: 700; text-align: left; border-bottom: 2px solid #f1f3f4; }
-td { padding: 18px; border-bottom: 1px solid #f1f3f4; }
+/* ❌ වැරදි උත්තරය (රතු පාට) */
+.option-btn.wrong {
+    background-color: var(--error-red) !important;
+    color: white !important;
+    border-color: #bd2130 !important;
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+    font-weight: bold;
+}
 
-/* --- 📱 8. Mobile Optimization (පට්ටම වැදගත්) --- */
+/* 📍 Navigation Dots (Status Colors) */
+.nav-dot.correct-nav {
+    background-color: var(--success-green) !important;
+    color: white !important;
+    border: none;
+}
+
+.nav-dot.wrong-nav {
+    background-color: var(--error-red) !important;
+    color: white !important;
+    border: none;
+}
+
+/* --- 6. Other Elements --- */
+.profile-card, .quiz-container { background: white; border-radius: 24px; padding: 40px; box-shadow: var(--card-shadow); max-width: 800px; margin: 0 auto; }
+input { background: #f8f9fa; border: 2px solid #f1f3f4; padding: 14px; border-radius: 12px; width: 100%; margin-bottom: 15px; }
+
+/* --- 📱 7. Mobile Optimization --- */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        padding: 10px;
-        display: flex;
-        overflow-x: auto; /* Side scroll links */
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
+    .sidebar { width: 100%; height: auto; position: sticky; top: 0; padding: 10px; display: flex; overflow-x: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     .sidebar h3, .sidebar hr { display: none; }
-
-    .sidebar a {
-        white-space: nowrap;
-        padding: 10px 15px;
-        margin-right: 10px;
-        margin-bottom: 0;
-        font-size: 13px;
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding: 20px;
-    }
-
-    .quiz-grid {
-        grid-template-columns: 1fr; /* Mobile එකේ එක කාඩ් එකයි */
-    }
-
-    .profile-card, .quiz-container {
-        padding: 25px 20px;
-        border-radius: 18px;
-    }
-    
-    /* Quiz Navigation Dots Mobile එකේ පේළියට */
-    #question-nav {
-        gap: 4px;
-    }
-    
-    .nav-dot {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
+    .sidebar a { white-space: nowrap; padding: 10px 15px; margin-right: 10px; margin-bottom: 0; font-size: 13px; border: 1px solid #f0f0f0; }
+    .main-content { margin-left: 0; padding: 20px; }
+    .quiz-grid { grid-template-columns: 1fr; }
+    .quiz-container { padding: 25px 15px; border-radius: 18px; }
+    .option-btn { padding: 14px 18px; font-size: 15px; }
 }
