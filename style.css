@@ -347,3 +347,18 @@ td { padding: 12px 8px; border-bottom: 1px solid #f1f3f4; text-align: center; fo
         font-size: 11px;
     }
 }
+/* --- 6. Profile & Containers --- */
+.profile-card, .quiz-container, .login-container { background: white; border-radius: 24px; padding: 40px; box-shadow: var(--card-shadow); max-width: 800px; margin: 0 auto; }
+input, select { background: #f8f9fa; border: 2px solid #f1f3f4; padding: 14px; border-radius: 12px; width: 100%; margin-bottom: 15px; }
+button { background: var(--primary-blue); color: white; border: none; padding: 15px 25px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+
+/* --- 📱 8. Mobile Optimization (Side Bar Fix) --- */
+@media (max-width: 768px) {
+    .dashboard-layout { flex-direction: column; }
+    .sidebar { width: 100% !important; height: auto !important; position: sticky !important; top: 0; left: 0; padding: 10px !important; display: flex !important; flex-direction: row !important; overflow-x: auto !important; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-right: none !important; border-bottom: 1px solid #eee; }
+    .sidebar h3 { display: none; }
+    .sidebar a { padding: 10px 15px !important; margin-right: 5px !important; margin-bottom: 0 !important; font-size: 13px !important; flex-shrink: 0; }
+    .main-content { margin-left: 0 !important; padding: 15px !important; width: 100%; }
+    .quiz-grid { grid-template-columns: 1fr; }
+    .profile-card, .quiz-container { padding: 20px; border-radius: 18px; }
+}
