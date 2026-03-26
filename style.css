@@ -224,14 +224,14 @@ button:hover {
 
 /* --- 7. Responsive Tables --- */
 .table-responsive {
-    background: red;
+    background: white;
     border-radius: 20px;
     padding: 10px;
     box-shadow: var(--card-shadow);
     overflow-x: auto;
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 300px; }
 th { padding: 18px; color: #5f6368; font-weight: 700; text-align: left; border-bottom: 2px solid #f1f3f4; }
 td { padding: 18px; border-bottom: 1px solid #f1f3f4; }
 
