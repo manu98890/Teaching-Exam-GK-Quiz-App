@@ -224,7 +224,7 @@ button:hover {
 
 /* --- 7. Responsive Tables --- */
 .table-responsive {
-    background: white;
+    background: red;
     border-radius: 20px;
     padding: 10px;
     box-shadow: var(--card-shadow);
