@@ -246,18 +246,6 @@ td { padding: 12px 8px; border-bottom: 1px solid #f1f3f4; text-align: center; fo
     border-radius: 6px; font-weight: 800; font-size: 11px;
 }
 
-/* --- 📱 8. Mobile Optimization (🛑 මෙතනයි උඹේ ඉල්ලීමට අනුව හැදුවේ) --- */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100% !important; height: auto !important; position: sticky !important; top: 0;
-        display: flex !important; flex-direction: row !important; overflow-x: auto !important;
-        padding: 8px !important; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 1001; background: #fff;
-    }
-    .sidebar h3, .sidebar hr { display: none; }
-    .sidebar a { padding: 8px 12px !important; margin-right: 6px !important; margin-bottom: 0 !important; font-size: 12px !important; flex-shrink: 0; }
-
-    .main-content { margin-left: 0 !important; padding: 12px !important; width: 100%; }
 
     /* 📊 Leaderboard/History Table Compression */
     th, td { padding: 8px 4px !important; font-size: 12px !important; }
@@ -280,54 +268,7 @@ td { padding: 12px 8px; border-bottom: 1px solid #f1f3f4; text-align: center; fo
     .quiz-card { padding: 20px 10px !important; }
 }
 
-/* --- 📱 8. Mobile Optimization (පට්ටම වැදගත්) --- */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        padding: 10px;
-        display: flex;
-        overflow-x: auto; /* Side scroll links */
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
 
-    .sidebar h3, .sidebar hr { display: none; }
-
-    .sidebar a {
-        white-space: nowrap;
-        padding: 10px 15px;
-        margin-right: 10px;
-        margin-bottom: 0;
-        font-size: 13px;
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding: 20px;
-    }
-
-    .quiz-grid {
-        grid-template-columns: 1fr; /* Mobile එකේ එක කාඩ් එකයි */
-    }
-
-    .profile-card, .quiz-container {
-        padding: 25px 20px;
-        border-radius: 18px;
-    }
-    
-    /* Quiz Navigation Dots Mobile එකේ පේළියට */
-    #question-nav {
-        gap: 4px;
-    }
-    
-    .nav-dot {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
-}
 
 /* --- 6. Profile & Containers --- */
 .profile-card, .quiz-container, .login-container { background: white; border-radius: 24px; padding: 40px; box-shadow: var(--card-shadow); max-width: 800px; margin: 0 auto; }
