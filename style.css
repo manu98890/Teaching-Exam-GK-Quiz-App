@@ -222,18 +222,17 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* --- 7. Responsive Tables --- */
+/* --- 7. Tables (General) --- */
 .table-responsive {
     background: white;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 15px;
     box-shadow: var(--card-shadow);
-    overflow-x: auto;
+    overflow: hidden; /* Scroll එක නැති කරන්න */
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 300px; }
-th { padding: 18px; color: #5f6368; font-weight: 700; text-align: left; border-bottom: 2px solid #f1f3f4; }
-td { padding: 18px; border-bottom: 1px solid #f1f3f4; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #1a73e8; color: white !important; padding: 12px 8px; font-size: 14px; text-align: center; }
+td { padding: 12px 8px; border-bottom: 1px solid #f1f3f4; text-align: center; font-size: 14px; }
 
 /* --- 📱 8. Mobile Optimization (පට්ටම වැදගත්) --- */
 @media (max-width: 768px) {
