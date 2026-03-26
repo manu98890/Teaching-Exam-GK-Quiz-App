@@ -324,6 +324,25 @@ td { padding: 12px 8px; border-bottom: 1px solid #f1f3f4; text-align: center; fo
     
     .nav-dot {
         width: 28px;
+
+        
+/* --- 🛑 9. Updated Fixes (Answers & Navigation) --- */
+.option-btn { width: 100% !important; padding: 16px 20px !important; margin-bottom: 12px !important; border-radius: 12px !important; border: 2px solid #ddd !important; text-align: left !important; background-color: #ffffff !important; color: #2c3e50 !important; cursor: pointer; font-size: 16px; font-weight: 600 !important; transition: 0.2s; display: block !important; }
+.option-btn.correct { background-color: #28a745 !important; color: white !important; }
+.option-btn.wrong { background-color: #dc3545 !important; color: white !important; }
+.nav-dot { width: 35px !important; height: 35px !important; border-radius: 8px !important; background-color: #eee !important; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.nav-dot.active { background-color: var(--primary-blue) !important; color: white !important; }
+
+/* --- ⏱️ 10. Timer & Score Visibility --- */
+.quiz-header-info { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 15px 25px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+#timer, #score-count { font-size: 18px !important; font-weight: 800 !important; color: #1a73e8 !important; background: #f1f7ff; padding: 8px 18px; border-radius: 50px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(26, 115, 232, 0.1); }
+#timer::before { content: "⏳"; font-size: 20px; }
+#score-count::before { content: "🏆"; font-size: 20px; }
+
+/* --- 📍 Navigation Dots Colors --- */
+.nav-dot.correct-nav { background-color: #28a745 !important; color: white !important; border: none !important; }
+.nav-dot.wrong-nav { background-color: #dc3545 !important; color: white !important; border: none !important; }
+
         height: 28px;
         font-size: 11px;
     }
